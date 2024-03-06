@@ -21,3 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Product List"
 include(":app")
+include(":common")
+include(":data")
+include(":domain")
