@@ -1,30 +1,33 @@
 package com.kostyarazboynik.productlist.datasource.remote.repository
 
+import com.kostyarazboynik.productlist.datasource.remote.ProductListItemApi
 import com.kostyarazboynik.productlist.model.DataState
 import com.kostyarazboynik.productlist.model.ProductListItem
-import com.kostyarazboynik.productlist.model.UiState
 import com.kostyarazboynik.productlist.repository.ProductListRemoteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class ProductListRemoteRepositoryImpl : ProductListRemoteRepository {
+class ProductListRemoteRepositoryImpl @Inject constructor(
+    private val service: ProductListItemApi,
+) : ProductListRemoteRepository {
 
-    override suspend fun getRemoteProductListItemsFlow(): Flow<UiState<List<ProductListItem>>> =
-        flow {
-            emit(UiState.Initial)
-
-            getProductListItems().collect { state ->
-                when (state) {
-                    DataState.Initial -> emit(UiState.Initial)
-                    is DataState.Exception -> emit(UiState.Error(state.cause.message.toString()))
-                    is DataState.Result -> {
-                        emit(UiState.Success(state.data))
-                    }
-                }
-            }
-        }
+    override suspend fun getRemoteProductListItemsFlow(): Flow<DataState<List<ProductListItem>>> =
+        getProductListItems()
 
     private suspend fun getProductListItems(): Flow<DataState<List<ProductListItem>>> = flow {
-        // TODO
+        try {
+            val networkListResponse = service.getList()
+
+            if (networkListResponse.isSuccessful) {
+                networkListResponse.body()?.let {
+                    emit(DataState.Result(it.list.map { it.networkEntityToModel() }))
+                }
+            } else {
+                networkListResponse.errorBody()?.close()
+            }
+        } catch (exception : Exception) {
+            emit(DataState.Exception(exception))
+        }
     }
 }

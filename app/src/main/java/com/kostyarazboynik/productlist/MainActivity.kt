@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.kostyarazboynik.productlist.dagger.AppComponent
-import com.kostyarazboynik.productlist.dagger.ComponentProvider
+import com.kostyarazboynik.productlist.core.dagger.AppComponent
+import com.kostyarazboynik.productlist.core.dagger.ComponentProvider
 import com.kostyarazboynik.productlist.databinding.ActivityMainBinding
 import com.kostyarazboynik.productlist.ui.dagger.UIComponent
 import com.kostyarazboynik.productlist.ui.product_list.ProductListFragment

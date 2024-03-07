@@ -1,4 +1,4 @@
-package com.kostyarazboynik.productlist.dagger
+package com.kostyarazboynik.productlist.core.dagger
 
 import android.app.Application
 import android.content.Context
@@ -7,12 +7,17 @@ import dagger.BindsInstance
 import dagger.Component
 import kotlinx.coroutines.CoroutineScope
 import com.kostyarazboynik.productlist.ProductListApp
+import com.kostyarazboynik.productlist.core.dagger.module.data.RepositoryModule
+import com.kostyarazboynik.productlist.core.dagger.module.domain.ControllersModule
+import com.kostyarazboynik.productlist.dagger.DaggerAppComponent
 import com.kostyarazboynik.productlist.ui.dagger.UIComponent
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
+        RepositoryModule::class,
+        ControllersModule::class,
     ]
 )
 interface AppComponent {
@@ -44,8 +49,7 @@ interface AppComponent {
         ) = store(
             coroutineScopeName = "AppComponent"
         ) { componentScope ->
-            DaggerAppComponent
-                .builder()
+            DaggerAppComponent.builder()
                 .componentScope(componentScope)
                 .context(application)
                 .application(application)

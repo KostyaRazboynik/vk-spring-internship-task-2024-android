@@ -1,4 +1,4 @@
-package com.kostyarazboynik.productlist.dagger
+package com.kostyarazboynik.productlist.core.dagger
 
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
