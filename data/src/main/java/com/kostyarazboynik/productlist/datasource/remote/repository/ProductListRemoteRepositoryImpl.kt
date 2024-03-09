@@ -1,5 +1,6 @@
 package com.kostyarazboynik.productlist.datasource.remote.repository
 
+import com.kostyarazboynik.productlist.Logger
 import com.kostyarazboynik.productlist.datasource.remote.ProductListItemApi
 import com.kostyarazboynik.productlist.model.DataState
 import com.kostyarazboynik.productlist.model.ProductListItem
@@ -20,14 +21,19 @@ class ProductListRemoteRepositoryImpl @Inject constructor(
             val networkListResponse = service.getList()
 
             if (networkListResponse.isSuccessful) {
-                networkListResponse.body()?.let {
-                    emit(DataState.Result(it.list.map { it.networkEntityToModel() }))
+                networkListResponse.body()?.let { response ->
+                    Logger.d(TAG, response.list.toString())
+                    emit(DataState.Result(response.list))
                 }
             } else {
                 networkListResponse.errorBody()?.close()
             }
-        } catch (exception : Exception) {
+        } catch (exception: Exception) {
             emit(DataState.Exception(exception))
         }
+    }
+
+    private companion object {
+        private const val TAG = "ProductListRemoteRepositoryImpl"
     }
 }

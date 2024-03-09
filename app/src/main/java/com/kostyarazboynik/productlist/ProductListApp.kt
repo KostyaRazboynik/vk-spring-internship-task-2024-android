@@ -2,7 +2,7 @@ package com.kostyarazboynik.productlist
 
 import android.app.Application
 import android.os.SystemClock
-import com.kostyarazboynik.productlist.core.dagger.AppComponent
+import com.kostyarazboynik.productlist.dagger.AppComponent
 import com.kostyarazboynik.productlist.timer.StartTimeHolder
 
 class ProductListApp : Application() {

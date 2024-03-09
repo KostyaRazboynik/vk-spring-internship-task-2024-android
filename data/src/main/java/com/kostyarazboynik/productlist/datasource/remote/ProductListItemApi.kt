@@ -6,7 +6,6 @@ import retrofit2.http.GET
 
 interface ProductListItemApi {
 
-    @GET("list")
+    @GET("products")
     suspend fun getList(): Response<ToDoItemListResponse>
-
 }

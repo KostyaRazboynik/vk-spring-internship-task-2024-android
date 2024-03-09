@@ -1,4 +1,4 @@
-package com.kostyarazboynik.productlist.core.dagger.module.data
+package com.kostyarazboynik.productlist.dagger.module.data.repository
 
 import com.kostyarazboynik.productlist.datasource.remote.repository.ProductListRemoteRepositoryImpl
 import com.kostyarazboynik.productlist.repository.ProductListRemoteRepository

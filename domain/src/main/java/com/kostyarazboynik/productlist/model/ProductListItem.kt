@@ -10,6 +10,6 @@ data class ProductListItem(
     val stock: Int,
     val brand: String,
     val category: Category,
-    val thumbnail: Any, // TODO picture
-    val images: List<Any>, // TODO list of picture
+    val thumbnail: String, // TODO picture
+    val images: List<String>, // TODO list of picture
 )

@@ -60,12 +60,19 @@ dependencies {
 
     // view binding
     //implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
     //implementation("androidx.activity:activity-ktx:1.8.2")
-    implementation("com.github.kirich1409:viewbindingpropertydelegate-full:1.5.9")
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.viewbinding.property.delegate.full)
 
     // dagger dependency injection pattern
-    api("com.google.dagger:dagger-android:2.48")
-    kapt("com.google.dagger:dagger-compiler:2.48")
-    annotationProcessor("com.google.dagger:dagger-android-processor:2.48")
+    api(libs.dagger.android)
+    kapt(libs.dagger.compiler)
+    annotationProcessor(libs.dagger.android.processor)
+
+    // network: retrofit + okhttp3 + gson
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
 }

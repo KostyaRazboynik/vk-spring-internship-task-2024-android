@@ -3,19 +3,28 @@ package com.kostyarazboynik.productlist.dagger
 import android.app.Application
 import android.content.Context
 import com.kostyarazboynik.productlist.MainActivity
+import com.kostyarazboynik.productlist.ProductListApp
+import com.kostyarazboynik.productlist.dagger.module.data.network.NetworkModule
+import com.kostyarazboynik.productlist.dagger.module.data.repository.RepositoryModule
+import com.kostyarazboynik.productlist.dagger.module.domain.ControllersModule
+import com.kostyarazboynik.productlist.ui.dagger.UIComponent
+import com.kostyarazboynik.productlist.ui.product_list.ProductListFragmentViewModel
 import dagger.BindsInstance
 import dagger.Component
 import kotlinx.coroutines.CoroutineScope
-import com.kostyarazboynik.productlist.ProductListApp
-import com.kostyarazboynik.productlist.ui.dagger.UIComponent
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
+        RepositoryModule::class,
+        NetworkModule::class,
+        ControllersModule::class,
     ]
 )
 interface AppComponent {
+
+    fun findViewModelFactory(): ProductListFragmentViewModel.Factory
 
     fun inject(app: ProductListApp)
 

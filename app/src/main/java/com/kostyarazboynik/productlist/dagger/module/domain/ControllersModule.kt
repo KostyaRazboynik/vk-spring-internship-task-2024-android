@@ -1,4 +1,4 @@
-package com.kostyarazboynik.productlist.core.dagger.module.domain
+package com.kostyarazboynik.productlist.dagger.module.domain
 
 import com.kostyarazboynik.productlist.repository.ProductListRemoteRepository
 import com.kostyarazboynik.productlist.usecase.GetProductListItemsUseCase

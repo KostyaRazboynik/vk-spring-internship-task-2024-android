@@ -1,13 +1,9 @@
 package com.kostyarazboynik.productlist.datasource.remote.dto.response
 
 import com.google.gson.annotations.SerializedName
-import com.kostyarazboynik.productlist.datasource.remote.dto.model.ProductListItemNetworkEntity
+import com.kostyarazboynik.productlist.model.ProductListItem
 
 data class ToDoItemListResponse(
-    @SerializedName("status")
-    val status: String,
-    @SerializedName("revision")
-    val revision: Int,
-    @SerializedName("list")
-    val list: List<ProductListItemNetworkEntity>
+    @SerializedName("products")
+    val list: List<ProductListItem>
 )

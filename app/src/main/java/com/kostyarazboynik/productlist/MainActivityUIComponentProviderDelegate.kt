@@ -1,6 +1,6 @@
 package com.kostyarazboynik.productlist
 
-import com.kostyarazboynik.productlist.core.dagger.ScopeComponentProvider
+import com.kostyarazboynik.productlist.dagger.ScopeComponentProvider
 import com.kostyarazboynik.productlist.ui.dagger.UIComponent
 import kotlinx.coroutines.CoroutineScope
 

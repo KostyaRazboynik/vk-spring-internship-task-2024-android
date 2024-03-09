@@ -9,6 +9,6 @@ class ProductListItemViewHolder(private val binding: ProductListItemLayoutBindin
 
     fun bind(productListItem: ProductListItem) {
 
-        // TODO set up binding using productListItem
+        binding.productTitle.text = productListItem.title
     }
 }

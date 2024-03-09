@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.flow
 class GetProductListItemsUseCase(
     private val productListRemoteRepository: ProductListRemoteRepository
 ) {
+
     suspend fun getProductItems(): Flow<UiState<List<ProductListItem>>> = flow {
         productListRemoteRepository.getRemoteProductListItemsFlow().collect { state ->
             when (state) {
