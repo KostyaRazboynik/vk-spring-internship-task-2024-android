@@ -75,4 +75,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging.interceptor)
+
+    // fresco facebook image loader
+    implementation(libs.fresco)
 }

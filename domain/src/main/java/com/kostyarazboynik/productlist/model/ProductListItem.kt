@@ -1,5 +1,7 @@
 package com.kostyarazboynik.productlist.model
 
+import android.net.Uri
+
 data class ProductListItem(
     val id: Int,
     val title: String,
@@ -10,6 +12,6 @@ data class ProductListItem(
     val stock: Int,
     val brand: String,
     val category: Category,
-    val thumbnail: String, // TODO picture
-    val images: List<String>, // TODO list of picture
+    val thumbnail: Uri,
+    val images: List<Uri>,
 )

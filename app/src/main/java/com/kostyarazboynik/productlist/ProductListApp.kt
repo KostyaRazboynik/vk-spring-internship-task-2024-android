@@ -2,6 +2,7 @@ package com.kostyarazboynik.productlist
 
 import android.app.Application
 import android.os.SystemClock
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.kostyarazboynik.productlist.dagger.AppComponent
 import com.kostyarazboynik.productlist.timer.StartTimeHolder
 
@@ -16,19 +17,20 @@ class ProductListApp : Application() {
 
         appStartTime = SystemClock.elapsedRealtime()
 
-        onUserUnlocked()
+        initialize()
     }
 
-    private fun onUserUnlocked() {
-        Logger.d(TAG, "onUserUnlocked")
+    private fun initialize() {
         if (isInitialized) {
+            Logger.d(TAG, "already initialized")
             return
         }
+        Logger.d(TAG, "already initializing")
         isInitialized = true
         AppComponent.init(this)
         AppComponent.component.inject(this)
-        Logger.d(TAG, "onUserUnlocked")
 
+        Fresco.initialize(this)
     }
 
     companion object {

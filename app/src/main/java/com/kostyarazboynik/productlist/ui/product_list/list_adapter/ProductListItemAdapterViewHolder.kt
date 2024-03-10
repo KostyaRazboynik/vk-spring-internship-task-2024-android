@@ -8,7 +8,10 @@ class ProductListItemViewHolder(private val binding: ProductListItemLayoutBindin
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(productListItem: ProductListItem) {
-
-        binding.productTitle.text = productListItem.title
+        binding.apply {
+            productTitle.text = productListItem.title
+            productDescription.text = productListItem.description
+            productImage.setImageURI(productListItem.thumbnail)
+        }
     }
 }

@@ -1,7 +1,9 @@
 package com.kostyarazboynik.productlist.usecase
 
+import android.net.Uri
 import com.kostyarazboynik.productlist.model.DataState
 import com.kostyarazboynik.productlist.model.ProductListItem
+import com.kostyarazboynik.productlist.model.ProductListItemJson
 import com.kostyarazboynik.productlist.model.UiState
 import com.kostyarazboynik.productlist.repository.ProductListRemoteRepository
 import kotlinx.coroutines.flow.Flow
@@ -16,7 +18,11 @@ class GetProductListItemsUseCase(
             when (state) {
                 DataState.Initial -> emit(UiState.Initial)
                 is DataState.Exception -> emit(UiState.Error(state.cause.message.toString()))
-                is DataState.Result -> emit(UiState.Success(state.data))
+                is DataState.Result -> emit(
+                    UiState.Success(
+                        state.data.map { it.toProductListItem() }
+                    )
+                )
             }
         }
     }

@@ -9,3 +9,10 @@ enum class Category {
     HOME_DECORATIONS,
     UNKNOWN,
 }
+
+fun String.toCategory(): Category =
+    try {
+        Category.valueOf(this)
+    } catch (e: IllegalArgumentException) {
+        Category.UNKNOWN
+    }

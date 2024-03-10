@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ProductListItemBaseText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">start</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_marginStart">@dimen/product_list_base_item_start_margin</item>
+        <item name="android:layout_marginTop">@dimen/product_list_base_item_top_margin</item>
+    </style>
+
+    <style name="ProductListItemBaseText.22">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="ProductListItemBaseText.16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ProductListItemImage">
+        <item name="android:layout_width">@dimen/product_image_size</item>
+        <item name="android:layout_height">@dimen/product_image_size</item>
+        <item name="roundAsCircle">true</item>
+        <item name="roundingBorderWidth">@dimen/product_image_rounding_border_width</item>
+        <item name="roundingBorderColor">@color/black</item>
+    </style>
+</resources>
