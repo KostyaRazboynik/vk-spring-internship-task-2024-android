@@ -46,7 +46,10 @@ dependencies {
     kapt(libs.dagger.compiler)
     annotationProcessor(libs.dagger.android.processor)
 
-    // retrofit + gson
+    // network: retrofit + okhttp3 + gson
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
+    implementation(libs.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
 }

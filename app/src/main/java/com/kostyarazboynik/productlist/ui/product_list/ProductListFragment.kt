@@ -10,13 +10,14 @@ import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.kostyarazboynik.productlist.Logger
 import com.kostyarazboynik.productlist.dagger.AppComponent
 import com.kostyarazboynik.productlist.databinding.FragmentProductListLayoutBinding
 import com.kostyarazboynik.productlist.extensions.launchNamed
 import com.kostyarazboynik.productlist.model.UiState
 import com.kostyarazboynik.productlist.ui.product_list.list_adapter.ProductListItemAdapter
 
-class ProductListFragment: Fragment() {
+class ProductListFragment : Fragment() {
 
     private val binding: FragmentProductListLayoutBinding by viewBinding(createMethod = CreateMethod.INFLATE)
 
@@ -43,7 +44,7 @@ class ProductListFragment: Fragment() {
 
     private fun setUpRecyclerView() {
         binding.recyclerView.apply {
-            adapter = ProductListItemAdapter()
+            adapter = ProductListItemAdapter { loadData() }
             layoutManager = LinearLayoutManager(context)
         }
     }
@@ -59,7 +60,8 @@ class ProductListFragment: Fragment() {
         viewModel.productListItemsFlow.collect { uiState ->
             when (uiState) {
                 is UiState.Success -> listAdapter.submitList(uiState.data)
-                else -> Unit
+                is UiState.Initial,
+                is UiState.Error -> Unit
             }
         }
     }

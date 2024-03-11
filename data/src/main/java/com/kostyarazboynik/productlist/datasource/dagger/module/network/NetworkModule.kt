@@ -1,4 +1,4 @@
-package com.kostyarazboynik.productlist.dagger.module.data.network
+package com.kostyarazboynik.productlist.datasource.dagger.module.network
 
 import com.kostyarazboynik.productlist.datasource.remote.ProductListItemApi
 import dagger.Module

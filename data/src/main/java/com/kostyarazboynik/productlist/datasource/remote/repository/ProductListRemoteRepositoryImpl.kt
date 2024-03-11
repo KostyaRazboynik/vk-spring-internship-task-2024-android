@@ -13,16 +13,25 @@ class ProductListRemoteRepositoryImpl @Inject constructor(
     private val service: ProductListItemApi,
 ) : ProductListRemoteRepository {
 
-    override suspend fun getRemoteProductListItemsFlow(): Flow<DataState<List<ProductListItemJson>>> =
-        getProductListItems()
+    override suspend fun getRemoteProductListItemsFlow(
+        limit: Int,
+        skip: Int
+    ): Flow<DataState<List<ProductListItemJson>>> =
+        getProductListItems(limit, skip)
 
-    private suspend fun getProductListItems(): Flow<DataState<List<ProductListItemJson>>> = flow {
+    private suspend fun getProductListItems(
+        limit: Int,
+        skip: Int
+    ): Flow<DataState<List<ProductListItemJson>>> = flow {
         try {
-            val networkListResponse = service.getList()
+            val networkListResponse = service.getList(limit, skip)
 
             if (networkListResponse.isSuccessful) {
                 networkListResponse.body()?.let { response ->
-                    Logger.d(TAG, response.list.toString())
+                    Logger.d(
+                        TAG,
+                        "networkListResponse.isSuccessful, list.size=${response.list.size}"
+                    )
                     emit(DataState.Result(response.list))
                 }
             } else {
