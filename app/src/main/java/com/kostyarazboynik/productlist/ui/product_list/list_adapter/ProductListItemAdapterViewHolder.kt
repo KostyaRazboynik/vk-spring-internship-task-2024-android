@@ -4,8 +4,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kostyarazboynik.productlist.databinding.ProductListItemLayoutBinding
 import com.kostyarazboynik.productlist.model.ProductListItem
 
-class ProductListItemViewHolder(private val binding: ProductListItemLayoutBinding) :
-    RecyclerView.ViewHolder(binding.root) {
+class ProductListItemViewHolder(
+    private val binding: ProductListItemLayoutBinding,
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(productListItem: ProductListItem) {
         binding.apply {

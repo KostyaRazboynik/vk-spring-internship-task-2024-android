@@ -4,9 +4,9 @@ import android.app.Application
 import android.content.Context
 import com.kostyarazboynik.productlist.MainActivity
 import com.kostyarazboynik.productlist.ProductListApp
+import com.kostyarazboynik.productlist.dagger.module.UseCasesModule
 import com.kostyarazboynik.productlist.datasource.dagger.module.network.NetworkModule
 import com.kostyarazboynik.productlist.datasource.dagger.module.repository.RepositoryModule
-import com.kostyarazboynik.productlist.dagger.module.UseCasesModule
 import com.kostyarazboynik.productlist.ui.dagger.UIComponent
 import com.kostyarazboynik.productlist.ui.product_list.ProductListFragmentViewModel
 import dagger.BindsInstance

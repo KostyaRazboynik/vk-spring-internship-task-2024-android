@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Product List</string>
+
+    <string name="product_price">price: %d</string>
+    <string name="product_discount">discount: %s</string>
+    <string name="product_rating">rating: %s</string>
+    <string name="product_stock">stock: %d</string>
+    <string name="product_brand">brand: %s</string>
+    <string name="product_category">category: %s</string>
 </resources>

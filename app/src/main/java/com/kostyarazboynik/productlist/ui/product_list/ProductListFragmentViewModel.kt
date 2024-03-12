@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.kostyarazboynik.productlist.extensions.launchNamed
 import com.kostyarazboynik.productlist.model.ProductListItem
 import com.kostyarazboynik.productlist.model.UiState
+import com.kostyarazboynik.productlist.ui.dagger.UIScope
 import com.kostyarazboynik.productlist.usecase.GetProductListItemsUseCase
 import com.kostyarazboynik.productlist.usecase.MergeProductListItemsUseCase
 import kotlinx.coroutines.Dispatchers

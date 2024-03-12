@@ -9,6 +9,7 @@ import com.kostyarazboynik.productlist.ui.product_list.list_adapter.diffutil.Pro
 
 class ProductListItemAdapter(
     private val loadNewProductsCallBack: () -> Unit,
+    private val onItemClickListener: (productListItem: ProductListItem) -> Unit
 ) : ListAdapter<ProductListItem, ProductListItemViewHolder>(ProductListItemDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListItemViewHolder =
@@ -21,7 +22,12 @@ class ProductListItemAdapter(
         )
 
     override fun onBindViewHolder(holder: ProductListItemViewHolder, position: Int) {
-        holder.bind(productListItem = getItem(position))
+        val productListItem = getItem(position)
+        holder.bind(productListItem = productListItem)
+        holder.itemView.setOnClickListener {
+            onItemClickListener(productListItem)
+        }
+
         if (position == itemCount - 3) {
             loadNewProductsCallBack()
         }

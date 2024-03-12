@@ -10,11 +10,13 @@ import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.kostyarazboynik.productlist.Logger
+import com.kostyarazboynik.productlist.R
 import com.kostyarazboynik.productlist.dagger.AppComponent
 import com.kostyarazboynik.productlist.databinding.FragmentProductListLayoutBinding
 import com.kostyarazboynik.productlist.extensions.launchNamed
+import com.kostyarazboynik.productlist.model.ProductListItem
 import com.kostyarazboynik.productlist.model.UiState
+import com.kostyarazboynik.productlist.ui.details.ProductListItemDetailsFragment
 import com.kostyarazboynik.productlist.ui.product_list.list_adapter.ProductListItemAdapter
 
 class ProductListFragment : Fragment() {
@@ -44,8 +46,23 @@ class ProductListFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         binding.recyclerView.apply {
-            adapter = ProductListItemAdapter { loadData() }
+            adapter = ProductListItemAdapter(
+                loadNewProductsCallBack = { loadData() },
+                onItemClickListener = { productListItem ->
+                    navigateToProductItemDetailsFragment(productListItem)
+                }
+            )
             layoutManager = LinearLayoutManager(context)
+        }
+    }
+
+    private fun navigateToProductItemDetailsFragment(productListItem: ProductListItem) {
+        activity?.supportFragmentManager?.let { manager ->
+            val transaction = manager.beginTransaction()
+            val fragment = ProductListItemDetailsFragment.newInstance(productListItem)
+            transaction.replace(R.id.frame_content, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
     }
 

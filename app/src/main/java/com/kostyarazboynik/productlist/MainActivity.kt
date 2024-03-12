@@ -47,7 +47,6 @@ class MainActivity private constructor(
         val manager: FragmentManager = supportFragmentManager
         val transaction = manager.beginTransaction()
         transaction.replace(binding.frameContent.id, fragment)
-        transaction.addToBackStack(null)
         transaction.commit()
     }
 

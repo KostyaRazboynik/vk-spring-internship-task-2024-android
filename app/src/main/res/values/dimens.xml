@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="product_image_size">80dp</dimen>
+    <dimen name="product_image_size_big">160dp</dimen>
     <dimen name="product_image_rounding_border_width">2dp</dimen>
 
     <dimen name="product_list_recycler_view_margin">10dp</dimen>
@@ -8,5 +9,7 @@
 
 
     <dimen name="product_list_base_item_top_margin">5dp</dimen>
+    <dimen name="product_list_base_item_top_margin_x2">10dp</dimen>
+    <dimen name="product_list_item_details_image_top_margin">50dp</dimen>
     <dimen name="product_list_base_item_start_margin">10dp</dimen>
 </resources>

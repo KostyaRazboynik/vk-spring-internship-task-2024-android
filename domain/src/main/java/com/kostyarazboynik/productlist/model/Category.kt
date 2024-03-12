@@ -12,7 +12,7 @@ enum class Category {
 
 fun String.toCategory(): Category =
     try {
-        Category.valueOf(this)
+        Category.valueOf(this.uppercase())
     } catch (e: IllegalArgumentException) {
         Category.UNKNOWN
     }
